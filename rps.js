@@ -41,8 +41,10 @@ function playRound(humanChoice, computerChoice) {
         return "You win! Scissors beat paper.";
    } else if (humanChoice === "scissors" && computerChoice === "rock") {
         return "You lose! Rock beats scissors";
-   } else {
+   } else if (humanChoice === "scissors" && computerChoice === "scissors") {
         return "It's a draw!";
+   } else {
+        return "Invalid hand";
    }
 }
 
