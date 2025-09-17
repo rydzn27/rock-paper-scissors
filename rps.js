@@ -33,7 +33,7 @@ function playRound(humanChoice, computerChoice) {
 
 
    if (humanChoice === computerChoice) {
-        console.log(`Its a draw! Both picked ${humanChoice}`);;
+        console.log(`It's a draw! Both picked ${humanChoice}`);;
    } else if (
      (humanChoice === "paper" && computerChoice === "rock") ||
      (humanChoice === "rock" && computerChoice === "scissors") ||
@@ -42,9 +42,9 @@ function playRound(humanChoice, computerChoice) {
           console.log(`You win! ${humanChoice} beats ${computerChoice}`);
           humanScore++; // Returns +1 score for human as value
      } else if (
-     (humanChoice != "rock") ||
-     (humanChoice != "paper") ||
-     (humanChoice != "scissors")) {
+     (humanChoice !== "rock") &&
+     (humanChoice !== "paper") &&
+     (humanChoice !== "scissors")) {
           console.log("Invalid hand"); //Returns Invalid hand if user does not input the correct hand.
      } else {
           console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
