@@ -19,32 +19,30 @@ function getHumanChoice() {
     return pili.toLowerCase(); // Stored the value in pili variable
 }
 
-let humanScore = 0;
-let computerScore = 0;
 
 //The logic for the game
 function playRound(humanChoice, computerChoice) {
     // I compared the value of the strings
    if (humanChoice === "paper" && computerChoice === "rock") {
-        return "You win! Paper beats rock.";
+        console.log("You win! Paper beats rock.");
    } else if (humanChoice === "paper" && computerChoice === "scissors") {
-        return "You lose! Scissors beats paper.";
+        console.log("You lose! Scissors beats paper.");
    } else if (humanChoice === "paper" && computerChoice === "paper") {
-        return "It's a draw!";
+        console.log("It's a draw!");
    } else if (humanChoice === "rock" && computerChoice === "paper") {
-        return "You lose! Paper beats rock";
+        console.log("You lose! Paper beats rock");
    } else if (humanChoice === "rock" && computerChoice === "scissors") {
-        return "You win! Rock beats scissors";
+        console.log("You win! Rock beats scissors");
    } else if (humanChoice === "rock" && computerChoice === "rock") {
-        return "It's a draw!";
+        console.log("It's a draw!");
    } else if (humanChoice === "scissors" && computerChoice === "paper") {
-        return "You win! Scissors beat paper.";
+        console.log("You win! Scissors beat paper.");
    } else if (humanChoice === "scissors" && computerChoice === "rock") {
-        return "You lose! Rock beats scissors";
+        console.log("You lose! Rock beats scissors");
    } else if (humanChoice === "scissors" && computerChoice === "scissors") {
-        return "It's a draw!";
+        console.log("It's a draw!");
    } else {
-        return "Invalid hand";
+        console.log("Invalid hand");
    }
 }
 
@@ -52,10 +50,11 @@ function playRound(humanChoice, computerChoice) {
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-console.log(playRound(humanSelection, computerSelection));
+playRound(humanSelection, computerSelection);
 
 
-
+let humanScore = 0;
+let computerScore = 0;
 
 
    
