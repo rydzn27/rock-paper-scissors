@@ -15,8 +15,8 @@ function getComputerChoice() {
 
 // Get input from user
 function getHumanChoice() {
-    let pili = prompt("Pick rock, paper, or scissors"); //used prompt to get input from user
-    return pili.toLowerCase(); // Stored the value in pili variable
+    const pili = prompt("Pick rock, paper, or scissors"); //used prompt to get input from user and store it in pili variable
+     return pili.toLowerCase();
 }
 
 
@@ -30,15 +30,22 @@ function playGame() {
 //The logic for the game
 function playRound(humanChoice, computerChoice) {
     // I compared the value of the strings
-   if (humanChoice ===  computerChoice) {
+
+
+   if (humanChoice === computerChoice) {
         console.log(`Its a draw! Both picked ${humanChoice}`);;
    } else if (
-     (humanChoice === "paper" && computerChoice === "rock" ||
-      humanChoice === "rock" && computerChoice === "scissors" ||
-      humanChoice === "scissors" && computerChoice === "paper"
-     )) {
+     (humanChoice === "paper" && computerChoice === "rock") ||
+     (humanChoice === "rock" && computerChoice === "scissors") ||
+     (humanChoice === "scissors" && computerChoice === "paper")
+     ) {
           console.log(`You win! ${humanChoice} beats ${computerChoice}`);
           humanScore++; // Returns +1 score for human as value
+     } else if (
+     (humanChoice != "rock") ||
+     (humanChoice != "paper") ||
+     (humanChoice != "scissors")) {
+          console.log("Invalid hand"); //Returns Invalid hand if user does not input the correct hand.
      } else {
           console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
           computerScore++; // Returns +1 score for computer as value
@@ -64,6 +71,10 @@ console.log("You: " + humanScore);
 console.log("Computer: " + computerScore);
 
 // Displays winner
+if (humanScore === 5) {
+     console.log("You win! Perfect!");
+}
+
 if (humanScore > computerScore) {
      console.log("You win!");
 } else if  (computerScore > humanScore) {
