@@ -19,20 +19,23 @@ function getHumanChoice() {
     return pili.toLowerCase(); // Stored the value in pili variable
 }
 
+
+
+// Score variables are declared outside of the playGame function to maintin its value across multiple function calls
 let humanScore = 0;
 let computerScore = 0;
 
-
+function playGame() {
 
 //The logic for the game
 function playRound(humanChoice, computerChoice) {
     // I compared the value of the strings
    if (humanChoice === "paper" && computerChoice === "rock") {
         console.log("You win! Paper beats rock.");
-        return humanScore++;
+        return humanScore++; // Returns +1 score for human as value
    } else if (humanChoice === "paper" && computerChoice === "scissors") {
         console.log("You lose! Scissors beats paper.");
-        return computerScore++;
+        return computerScore++; // Returns +1 score for computer as value
    } else if (humanChoice === "paper" && computerChoice === "paper") {
         console.log("It's a draw!");
         
@@ -65,13 +68,24 @@ const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
 
+}
+// Calls playGame function 5 times
+playGame();
+playGame();
+playGame();
+playGame();
+playGame();
 
+//Displays scores
 console.log("You: " + humanScore);
 console.log("Computer: " + computerScore);
 
-
-
-
+// Displays winner
+if (humanScore > computerScore) {
+     console.log("You win!");
+} else {
+     console.log("Computer wins!");
+}
 
 
 
