@@ -83,8 +83,10 @@ console.log("Computer: " + computerScore);
 // Displays winner
 if (humanScore > computerScore) {
      console.log("You win!");
-} else {
+} else if  (computerScore > humanScore) {
      console.log("Computer wins!");
+} else {
+     console.log("Its a draw!");
 }
 
 
