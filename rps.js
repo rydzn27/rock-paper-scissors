@@ -60,11 +60,7 @@ playRound(humanSelection, computerSelection);
 
 }
 // Calls playGame function 5 times
-playGame();
-playGame();
-playGame();
-playGame();
-playGame();
+
 
 //Displays scores
 console.log("You: " + humanScore);
