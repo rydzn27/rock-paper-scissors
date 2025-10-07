@@ -12,25 +12,19 @@ function getComputerChoice() {
 
 }
 
-
-// Get input from user
-function getHumanChoice() {
-    const pili = prompt("Pick rock, paper, or scissors"); //used prompt to get input from user and store it in pili variable
-     return pili.toLowerCase();
-}
-
-
+  
 
 // Score variables are declared outside of the playGame function to maintin its value across multiple function calls
 let humanScore = 0;
 let computerScore = 0;
+let roundsPlayed = 0;
 
-function playGame() {
+
 
 //The logic for the game
-function playRound(humanChoice, computerChoice) {
-    // I compared the value of the strings
-
+function playRound(humanChoice) {
+    computerChoice = getComputerChoice();
+    roundsPlayed++;
 
    if (humanChoice === computerChoice) {
         console.log(`It's a draw! Both picked ${humanChoice}`);;
@@ -50,34 +44,66 @@ function playRound(humanChoice, computerChoice) {
           console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
           computerScore++; // Returns +1 score for computer as value
      }
+
+     // Displays scores
+     const results = document.querySelector("#results");
+     const round = document.createElement("p");
+     round.textContent = `You: ${humanScore}, Computer: ${computerScore}`;
+     results.append(round);
+
+     console.log("You: " + humanScore);
+     console.log("Computer: " + computerScore);
+
+     // Displays winner
+     const winner = document.createElement("p");
+
+     if (humanScore === 5) {
+          winner.textContent = `You win! Perfect!`;
+          console.log("You win! Perfect!");
+     }
+
+     if (humanScore > computerScore) {
+          winner.textContent = `You win!`;
+          console.log("You win!");
+     } else if  (computerScore > humanScore) {
+          winner.textContent = `Computer wins!`;
+          console.log("Computer wins!");
+     } else {
+          winner.textContent = `Its a draw!`;
+          console.log("Its a draw!");
+     }
+     results.append(winner);
+
+     // Disables the buttons after 5 rounds
+     if(roundsPlayed === 5) {
+          btnRock.disabled = true;
+          btnPaper.disabled = true;
+          btnScissors.disabled = true;
+     }
+
 }
+     
+     const btnRock = document.querySelector("#rock");
+     const btnPaper = document.querySelector("#paper");
+     const btnScissors = document.querySelector("#scissors");
+
+     // Added event listeners for each button and called playRound
+     btnRock.addEventListener("click", () => playRound("rock"));
+     btnPaper.addEventListener("click", () => playRound("paper"));
+     btnScissors.addEventListener("click",() => playRound("scissors"));
+
 
 // Assigned getHumanChoice() and getComputerChoice() as arguments for the playRound parameters
-humanSelection = getHumanChoice();
-computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
 
-}
+
+
+
+
 // Calls playGame function 5 times
 
 
-//Displays scores
-console.log("You: " + humanScore);
-console.log("Computer: " + computerScore);
 
-// Displays winner
-if (humanScore === 5) {
-     console.log("You win! Perfect!");
-}
-
-if (humanScore > computerScore) {
-     console.log("You win!");
-} else if  (computerScore > humanScore) {
-     console.log("Computer wins!");
-} else {
-     console.log("Its a draw!");
-}
 
 
 
