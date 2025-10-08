@@ -62,15 +62,14 @@ function playRound(humanChoice) {
       // Displays winner
      const winner = document.createElement("p");
 
-     console.log("You: " + humanScore);
-     console.log("Computer: " + computerScore);
-
+     // Function to disable buttons
     function endGame() {
           btnRock.disabled = true;
           btnPaper.disabled = true;
           btnScissors.disabled = true;
     };
 
+    // Display winner after if player or computer scores 3 after 3 rounds
      if(roundsPlayed === 3) {
           if(humanScore === 3) {
                winner.textContent = `You win! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
@@ -80,7 +79,8 @@ function playRound(humanChoice) {
                endGame();
           } else {};
      }
-     results.append(winner);
+
+     
      // Disables the buttons after 5 rounds
      if(roundsPlayed === 5) {
           endGame();
@@ -91,9 +91,8 @@ function playRound(humanChoice) {
           } else {
                winner.textContent = `Its a draw! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
           };
-          
-          
      }
+     results.append(winner);
 
 }
      
