@@ -25,14 +25,10 @@ function playRound(humanChoice) {
 
     const results = document.querySelector("#results");
     const round = document.createElement("p");
-    results.append(round);
-
     const score = document.createElement("p");
-    results.append(score);
-
-    // Displays final winner
     const winner = document.createElement("p");
-    results.append(winner);
+
+    results.append(round, score, winner);
 
     // Displays play again button
     const playAgain = document.createElement("button");
@@ -50,17 +46,12 @@ function playRound(humanChoice) {
           round.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
           console.log(`You win! ${humanChoice} beats ${computerChoice}`);
           humanScore++; // Returns +1 score for human as value
-     } else if (
-     (humanChoice !== "rock") &&
-     (humanChoice !== "paper") &&
-     (humanChoice !== "scissors")) {
-          round.textContent = "Invalid hand";
-          console.log("Invalid hand"); //Returns Invalid hand if user does not input the correct hand.
      } else {
           round.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
           console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
           computerScore++; // Returns +1 score for computer as value
      }
+     
      score.textContent = `You: ${humanScore}, Computer: ${computerScore}`;
      
 
