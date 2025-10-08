@@ -1,10 +1,10 @@
 // Randomly generates rock, paper, scissors
 function getComputerChoice() {
-  let kamay = Math.floor(Math.random() * 3); // I used Math.random * 3 to generate numbers between 0 to 2
+  let hand = Math.floor(Math.random() * 3); // I used Math.random * 3 to generate numbers between 0 to 2
   
-  if (kamay === 0) {         // I converted the number to strings (rock, paper, scissors)
+  if (hand === 0) {         // I converted the number to strings (rock, paper, scissors)
     return "rock";
-  } else if (kamay === 1) {
+  } else if (hand === 1) {
     return "paper";
   } else {
     return "scissors";
@@ -16,7 +16,6 @@ function getComputerChoice() {
 let humanScore = 0;
 let computerScore = 0;
 let roundsPlayed = 0;
-
 
 
 //The logic for the game
@@ -38,7 +37,6 @@ function playRound(humanChoice) {
     // Displays play again button
     const playAgain = document.createElement("button");
     playAgain.textContent = "Play Again?";
-
 
 
    if (humanChoice === computerChoice) {
@@ -65,8 +63,6 @@ function playRound(humanChoice) {
      }
      score.textContent = `You: ${humanScore}, Computer: ${computerScore}`;
      
-
-      
 
      // Function to disable buttons
     function endGame() {
@@ -124,19 +120,3 @@ function playRound(humanChoice) {
      btnRock.addEventListener("click", () => playRound("rock"));
      btnPaper.addEventListener("click", () => playRound("paper"));
      btnScissors.addEventListener("click",() => playRound("scissors"));
-
-
-// Assigned getHumanChoice() and getComputerChoice() as arguments for the playRound parameters
-
-
-
-
-
-
-// Calls playGame function 5 times
-
-
-
-
-
-
