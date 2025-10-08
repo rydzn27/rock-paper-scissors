@@ -26,59 +26,73 @@ function playRound(humanChoice) {
     computerChoice = getComputerChoice();
     roundsPlayed++;
 
+    const results = document.querySelector("#results");
+    const round = document.createElement("p");
+    results.append(round);
+
+    const score = document.createElement("p");
+    results.append(score);
+
+
+
    if (humanChoice === computerChoice) {
-        console.log(`It's a draw! Both picked ${humanChoice}`);;
+          round.textContent = `It's a draw! Both picked ${humanChoice}`;
+          console.log(`It's a draw! Both picked ${humanChoice}`);;
    } else if (
      (humanChoice === "paper" && computerChoice === "rock") ||
      (humanChoice === "rock" && computerChoice === "scissors") ||
      (humanChoice === "scissors" && computerChoice === "paper")
      ) {
+          round.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
           console.log(`You win! ${humanChoice} beats ${computerChoice}`);
           humanScore++; // Returns +1 score for human as value
      } else if (
      (humanChoice !== "rock") &&
      (humanChoice !== "paper") &&
      (humanChoice !== "scissors")) {
+          round.textContent = "Invalid hand";
           console.log("Invalid hand"); //Returns Invalid hand if user does not input the correct hand.
      } else {
+          round.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
           console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
           computerScore++; // Returns +1 score for computer as value
      }
-
      // Displays scores
-     const results = document.querySelector("#results");
-     const round = document.createElement("p");
-     round.textContent = `You: ${humanScore}, Computer: ${computerScore}`;
-     results.append(round);
+     score.textContent = `You: ${humanScore}, Computer: ${computerScore}`;
+      // Displays winner
+     const winner = document.createElement("p");
 
      console.log("You: " + humanScore);
      console.log("Computer: " + computerScore);
 
-     // Displays winner
-     const winner = document.createElement("p");
-
-     if (humanScore === 5) {
-          winner.textContent = `You win! Perfect!`;
-          console.log("You win! Perfect!");
-     }
-
-     if (humanScore > computerScore) {
-          winner.textContent = `You win!`;
-          console.log("You win!");
-     } else if  (computerScore > humanScore) {
-          winner.textContent = `Computer wins!`;
-          console.log("Computer wins!");
-     } else {
-          winner.textContent = `Its a draw!`;
-          console.log("Its a draw!");
-     }
-     results.append(winner);
-
-     // Disables the buttons after 5 rounds
-     if(roundsPlayed === 5) {
+    function endGame() {
           btnRock.disabled = true;
           btnPaper.disabled = true;
           btnScissors.disabled = true;
+    };
+
+     if(roundsPlayed === 3) {
+          if(humanScore === 3) {
+               winner.textContent = `You win! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
+               endGame();
+          } else if (computerScore === 3) {
+               winner.textContent = `Computer wins! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
+               endGame();
+          } else {};
+     }
+     results.append(winner);
+     // Disables the buttons after 5 rounds
+     if(roundsPlayed === 5) {
+          endGame();
+          if(humanScore > computerScore) {
+               winner.textContent = `You win! Final Score: You: ${humanScore}, Computer: ${computerScore}`
+          } else if (computerScore > humanScore) {
+               winner.textContent = `Computer wins! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
+          } else {
+               winner.textContent = `Its a draw! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
+          };
+          
+          
      }
 
 }
