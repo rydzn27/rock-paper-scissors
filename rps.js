@@ -12,8 +12,6 @@ function getComputerChoice() {
 
 }
 
-  
-
 // Score variables are declared outside of the playGame function to maintin its value across multiple function calls
 let humanScore = 0;
 let computerScore = 0;
@@ -33,10 +31,18 @@ function playRound(humanChoice) {
     const score = document.createElement("p");
     results.append(score);
 
+    // Displays final winner
+    const winner = document.createElement("p");
+    results.append(winner);
+
+    // Displays play again button
+    const playAgain = document.createElement("button");
+    playAgain.textContent = "Play Again?";
+
 
 
    if (humanChoice === computerChoice) {
-          round.textContent = `It's a draw! Both picked ${humanChoice}`;
+          round.textContent = `It's a draw! Both picked ${humanChoice}`; // Displays round winner
           console.log(`It's a draw! Both picked ${humanChoice}`);;
    } else if (
      (humanChoice === "paper" && computerChoice === "rock") ||
@@ -57,10 +63,10 @@ function playRound(humanChoice) {
           console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
           computerScore++; // Returns +1 score for computer as value
      }
-     // Displays scores
      score.textContent = `You: ${humanScore}, Computer: ${computerScore}`;
-      // Displays winner
-     const winner = document.createElement("p");
+     
+
+      
 
      // Function to disable buttons
     function endGame() {
@@ -69,21 +75,23 @@ function playRound(humanChoice) {
           btnScissors.disabled = true;
     };
 
+
     // Display winner after if player or computer scores 3 after 3 rounds
-     if(roundsPlayed === 3) {
+     if(roundsPlayed >= 3) {
           if(humanScore === 3) {
                winner.textContent = `You win! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
                endGame();
+               results.append(playAgain);
           } else if (computerScore === 3) {
                winner.textContent = `Computer wins! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
                endGame();
+               results.append(playAgain);
           } else {};
      }
 
      
      // Disables the buttons after 5 rounds
      if(roundsPlayed === 5) {
-          endGame();
           if(humanScore > computerScore) {
                winner.textContent = `You win! Final Score: You: ${humanScore}, Computer: ${computerScore}`
           } else if (computerScore > humanScore) {
@@ -91,8 +99,20 @@ function playRound(humanChoice) {
           } else {
                winner.textContent = `Its a draw! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
           };
+          endGame();
+          results.append(playAgain);
      }
-     results.append(winner);
+     
+     // Resets the game
+     playAgain.addEventListener("click", () => {
+          humanScore = 0;
+          computerScore = 0;
+          roundsPlayed = 0;
+          btnRock.disabled = false;
+          btnPaper.disabled = false;
+          btnScissors.disabled = false;
+          results.innerHTML = "";
+    });
 
 }
      
