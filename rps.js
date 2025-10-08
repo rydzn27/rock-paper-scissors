@@ -12,7 +12,7 @@ function getComputerChoice() {
 
 }
 
-// Score variables are declared outside of the playGame function to maintin its value across multiple function calls
+// Score variables are declared outside of the playGame function to maintain its value across multiple function calls
 let humanScore = 0;
 let computerScore = 0;
 let roundsPlayed = 0;
@@ -20,7 +20,7 @@ let roundsPlayed = 0;
 
 //The logic for the game
 function playRound(humanChoice) {
-    computerChoice = getComputerChoice();
+    const computerChoice = getComputerChoice();
     roundsPlayed++;
 
     const results = document.querySelector("#results");
@@ -70,35 +70,19 @@ function playRound(humanChoice) {
           btnPaper.disabled = true;
           btnScissors.disabled = true;
     };
-
-
-    // Display winner after if player or computer scores 3 after 3 rounds
-     if(roundsPlayed >= 3) {
-          if(humanScore === 3) {
-               winner.textContent = `You win! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
-               endGame();
-               results.append(playAgain);
-          } else if (computerScore === 3) {
-               winner.textContent = `Computer wins! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
-               endGame();
-               results.append(playAgain);
-          } else {};
-     }
-
      
-     // Disables the buttons after 5 rounds
-     if(roundsPlayed === 5) {
+
+     if(humanScore === 3 || computerScore === 3 || roundsPlayed === 5) {
           if(humanScore > computerScore) {
-               winner.textContent = `You win! Final Score: You: ${humanScore}, Computer: ${computerScore}`
+               winner.textContent = `You win! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
           } else if (computerScore > humanScore) {
                winner.textContent = `Computer wins! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
           } else {
                winner.textContent = `Its a draw! Final Score: You: ${humanScore}, Computer: ${computerScore}`;
-          };
+          }
           endGame();
           results.append(playAgain);
      }
-     
      // Resets the game
      playAgain.addEventListener("click", () => {
           humanScore = 0;
